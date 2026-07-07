@@ -26,9 +26,20 @@ router.post('/register', [
     });
   }
 
-  const { username, email, password, role } = req.body;
+  const { username, email, password, role, adminSecret } = req.body;
 
   try {
+    // Admin Account Provisioning Security Check (Secret Challenge Verification)
+    if (role === 'Admin') {
+      const expectedSecret = process.env.ADMIN_SECRET_KEY || '0xADMIN_SECURE_KEY_2026';
+      if (!adminSecret || adminSecret !== expectedSecret) {
+        return res.status(403).json({
+          message: 'Security Alert: Unauthorized attempt to build Root Administrator account denied. Invalid or missing Admin Secret Key.',
+          securityAlert: true
+        });
+      }
+    }
+
     // Check if user already exists
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {

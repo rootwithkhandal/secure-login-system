@@ -5,6 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'Mulish', 'sans-serif'],
+        display: ['Mulish', 'Inter', 'sans-serif'],
+        label: ['Mulish', 'Inter', 'sans-serif'],
+        mono: ['Inter', 'Mulish', 'monospace'],
+        body: ['Inter', 'Mulish', 'sans-serif'],
+      },
       colors: {
         primary: {
           50: '#f5f7ff',

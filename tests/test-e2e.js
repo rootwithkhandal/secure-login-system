@@ -4,11 +4,11 @@
  * Tests: Registration, Login, CAPTCHA, Account Lockout, RBAC, Edge Cases
  */
 
-require('dotenv').config();
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const User = require('./models/User');
-const { generateToken, verifyToken } = require('./utils/jwt');
+const User = require('../models/User');
+const { generateToken, verifyToken } = require('../utils/jwt');
 
 // Test data
 const testUsers = {

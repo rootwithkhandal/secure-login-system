@@ -23,13 +23,9 @@ const verifyToken = (token) => {
   }
 };
 
-// Decode token without verification (for debugging)
-const decodeToken = (token) => {
-  return jwt.decode(token);
-};
-
+// ponytail: deleted unused decodeToken helper
 module.exports = {
   generateToken,
-  verifyToken,
-  decodeToken
+  verifyToken
 };
+

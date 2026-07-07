@@ -71,33 +71,38 @@ function displayUsers(users) {
     
     users.forEach(user => {
         const row = document.createElement('tr');
-        row.className = 'hover:bg-gray-50';
+        row.className = 'hover:bg-[#0d1828] transition duration-150';
         
-        const createdDate = new Date(user.createdAt).toLocaleDateString();
+        const createdDate = new Date(user.createdAt).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
         
         row.innerHTML = `
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm font-medium text-gray-900">${user.username}</div>
+                <div class="font-mono text-sm font-semibold text-white flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#4fc3f7]"></span>
+                    ${user.username}
+                </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-600">${user.email}</div>
+                <div class="font-mono text-xs text-[#6b7a8d]">${user.email}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 py-1 text-xs font-semibold rounded-full ${
-                    user.role === 'Admin' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
-                }">
-                    ${user.role}
+                <span class="badge ${user.role === 'Admin' ? 'badge-purple' : 'badge-bug'}">
+                    [${user.role.toUpperCase()}]
                 </span>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+            <td class="px-6 py-4 whitespace-nowrap font-mono text-xs text-[#6b7a8d]">
                 ${createdDate}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm">
-                <button onclick="editUser('${user._id}')" class="text-blue-600 hover:text-blue-800 mr-3">
-                    ✏️ Edit
+            <td class="px-6 py-4 whitespace-nowrap text-right text-xs">
+                <button onclick="editUser('${user._id}')" class="btn-tactical px-3 py-1 rounded text-[11px] tracking-widest mr-2">
+                    [EDIT]
                 </button>
-                <button onclick="deleteUser('${user._id}', '${user.username}')" class="text-red-600 hover:text-red-800">
-                    🗑️ Delete
+                <button onclick="deleteUser('${user._id}', '${user.username}')" class="btn-tactical btn-danger px-3 py-1 rounded text-[11px] tracking-widest">
+                    [DEL]
                 </button>
             </td>
         `;

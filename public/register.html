@@ -3,110 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Enterprise Auth System</title>
+    <title>0xAuth // Enterprise Registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">🚀 Create Account</h1>
-            <p class="text-gray-600">Join our secure platform</p>
+<body class="min-h-screen flex items-center justify-center p-4 relative py-12">
+    <!-- Top Left Brand Logo (Reference UI Style) -->
+    <header class="absolute top-0 left-0 w-full p-6 flex items-center justify-between z-20">
+        <a href="login.html" class="flex items-center gap-3 group">
+            <img src="/logo.svg" alt="SecureAuth Logo" class="w-10 h-10 rounded-xl object-contain shadow-[0_0_15px_rgba(79,195,247,0.2)] group-hover:scale-105 transition">
+            <div>
+                <span class="font-display text-lg text-white tracking-wider block leading-none">SECURE AUTH</span>
+                <span class="font-label text-[10px] text-[#6b7a8d] tracking-widest block">ENTERPRISE ACCESS PORTAL</span>
+            </div>
+        </a>
+        <div class="flex items-center gap-2">
+            <span class="badge badge-purple">[ENROLLMENT]</span>
+        </div>
+    </header>
+
+    <!-- Radar Concentric Rings Background (Reference UI Style) -->
+    <div class="radar-bg">
+        <div class="radar-ring ring-1"></div>
+        <div class="radar-ring ring-2"></div>
+        <div class="radar-ring ring-3"></div>
+        <div class="radar-ring ring-4"></div>
+    </div>
+
+    <!-- Background Watermark -->
+    <div class="bg-watermark">0xPROVISION</div>
+
+    <!-- Custom Cyber-Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Centered Glassmorphic Auth Card (Reference UI Style) -->
+    <main class="w-full max-w-md auth-card p-8 z-10 fade-in my-auto">
+        <!-- Title & Subtitle -->
+        <div class="text-center mb-6">
+            <h1 class="font-display text-3xl text-white tracking-wide mb-1">OPERATOR REGISTRATION</h1>
+            <p class="text-xs font-label text-[#6b7a8d] tracking-widest leading-relaxed">
+                PROVISION IDENTITY INTO SYSTEM ACCESS CONTROL MATRIX
+            </p>
         </div>
 
-        <form id="registerForm" class="space-y-5">
-            <!-- Username -->
+        <form id="registerForm" class="space-y-4">
+            <!-- Username Input with Left Icon -->
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
-                <input type="text" id="username" required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                    placeholder="johndoe">
-            </div>
-
-            <!-- Email -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input type="email" id="email" required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                    placeholder="your@email.com">
-            </div>
-
-            <!-- Password -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                <label class="block text-[11px] font-label text-[#4fc3f7] tracking-widest mb-1">OPERATOR HANDLE</label>
                 <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6b7a8d]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                    <input type="text" id="username" required
+                        class="w-full pl-10 pr-4 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/25 rounded-xl text-white placeholder-[#6b7a8d]/60 focus:border-[#4fc3f7] transition font-mono text-sm"
+                        placeholder="john_doe">
+                </div>
+            </div>
+
+            <!-- Email Input with Left Icon -->
+            <div>
+                <label class="block text-[11px] font-label text-[#4fc3f7] tracking-widest mb-1">CONTACT EMAIL</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6b7a8d]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <input type="email" id="email" required
+                        class="w-full pl-10 pr-4 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/25 rounded-xl text-white placeholder-[#6b7a8d]/60 focus:border-[#4fc3f7] transition font-mono text-sm"
+                        placeholder="user@example.com">
+                </div>
+            </div>
+
+            <!-- Password Input with Left Icon -->
+            <div>
+                <label class="block text-[11px] font-label text-[#4fc3f7] tracking-widest mb-1">ACCESS PASSKEY</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6b7a8d]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
                     <input type="password" id="password" required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition pr-12"
-                        placeholder="••••••••">
-                    <button type="button" id="togglePassword" 
-                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
-                        👁️
+                        class="w-full pl-10 pr-12 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/25 rounded-xl text-white placeholder-[#6b7a8d]/60 focus:border-[#4fc3f7] transition font-mono text-sm"
+                        placeholder="••••••••••••">
+                    <button type="button" id="togglePassword" title="Toggle Visibility"
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#6b7a8d] hover:text-[#4fc3f7] font-mono text-xs">
+                        [SHOW]
                     </button>
                 </div>
-                
+
                 <!-- Password Strength -->
                 <div class="mt-2">
-                    <div class="flex gap-1 mb-2">
-                        <div id="strength-bar-1" class="h-1 flex-1 bg-gray-200 rounded"></div>
-                        <div id="strength-bar-2" class="h-1 flex-1 bg-gray-200 rounded"></div>
-                        <div id="strength-bar-3" class="h-1 flex-1 bg-gray-200 rounded"></div>
+                    <div class="flex gap-1.5 mb-1">
+                        <div id="strength-bar-1" class="h-1 flex-1 bg-[#111f33] rounded"></div>
+                        <div id="strength-bar-2" class="h-1 flex-1 bg-[#111f33] rounded"></div>
+                        <div id="strength-bar-3" class="h-1 flex-1 bg-[#111f33] rounded"></div>
                     </div>
-                    <p id="strength-text" class="text-sm text-gray-600"></p>
+                    <p id="strength-text" class="text-[11px] font-label tracking-wider text-[#6b7a8d]"></p>
                 </div>
 
                 <!-- Password Requirements -->
-                <div class="mt-3 space-y-1 text-sm">
-                    <div id="req-length" class="flex items-center gap-2 text-gray-600">
-                        <span class="text-gray-400">○</span> At least 8 characters
+                <div class="mt-1.5 grid grid-cols-2 gap-1 text-[10px] font-label tracking-wide">
+                    <div id="req-length" class="flex items-center gap-1 text-[#6b7a8d]">
+                        <span class="text-[#6b7a8d] font-mono">○</span> 8+ CHARS
                     </div>
-                    <div id="req-uppercase" class="flex items-center gap-2 text-gray-600">
-                        <span class="text-gray-400">○</span> One uppercase letter
+                    <div id="req-uppercase" class="flex items-center gap-1 text-[#6b7a8d]">
+                        <span class="text-[#6b7a8d] font-mono">○</span> 1 UPPER
                     </div>
-                    <div id="req-lowercase" class="flex items-center gap-2 text-gray-600">
-                        <span class="text-gray-400">○</span> One lowercase letter
+                    <div id="req-lowercase" class="flex items-center gap-1 text-[#6b7a8d]">
+                        <span class="text-[#6b7a8d] font-mono">○</span> 1 LOWER
                     </div>
-                    <div id="req-number" class="flex items-center gap-2 text-gray-600">
-                        <span class="text-gray-400">○</span> One number
+                    <div id="req-number" class="flex items-center gap-1 text-[#6b7a8d]">
+                        <span class="text-[#6b7a8d] font-mono">○</span> 1 NUMBER
                     </div>
                 </div>
             </div>
 
             <!-- Confirm Password -->
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-                <input type="password" id="confirmPassword" required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                    placeholder="••••••••">
+                <label class="block text-[11px] font-label text-[#4fc3f7] tracking-widest mb-1">CONFIRM PASSKEY</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6b7a8d]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <input type="password" id="confirmPassword" required
+                        class="w-full pl-10 pr-4 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/25 rounded-xl text-white placeholder-[#6b7a8d]/60 focus:border-[#4fc3f7] transition font-mono text-sm"
+                        placeholder="••••••••••••">
+                </div>
             </div>
 
-            <!-- Role -->
+            <!-- Role Selection -->
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Role</label>
-                <select id="role" required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
-                </select>
+                <label class="block text-[11px] font-label text-[#4fc3f7] tracking-widest mb-1">CLEARANCE LEVEL</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6b7a8d]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <select id="role" required
+                        class="w-full pl-10 pr-4 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/25 rounded-xl text-white focus:border-[#4fc3f7] transition font-label text-sm uppercase">
+                        <option value="User" class="bg-[#0a1220] text-white">Standard Operator [User]</option>
+                        <option value="Admin" class="bg-[#0a1220] text-[#ce93d8]">Root Administrator [Admin]</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Admin Secret Key Challenge (Hidden by default unless Admin is selected) -->
+            <div id="adminSecretContainer" class="hidden transition-all duration-300">
+                <label class="block text-[11px] font-label text-[#e53935] tracking-widest mb-1 flex items-center gap-1.5">
+                    <span>🔑</span> ADMIN SECRET CHALLENGE <span class="text-xs opacity-75">(REQUIRED FOR ROOT ADMIN)</span>
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#e53935]">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+                    </div>
+                    <input type="password" id="adminSecret"
+                        class="w-full pl-10 pr-4 py-2.5 bg-[#060c14]/90 border-2 border-[#e53935]/60 rounded-xl text-white placeholder-[#e53935]/40 focus:border-[#e53935] focus:ring-1 focus:ring-[#e53935] transition font-mono text-sm"
+                        placeholder="ENTER ADMIN SECRET KEY">
+                </div>
+                <p class="text-[10px] font-mono text-[#e53935]/80 mt-1 pl-1">
+                    [SECURITY NOTICE]: Root provisioning requires system secret verification.
+                </p>
             </div>
 
             <!-- Error/Success Messages -->
-            <div id="message" class="hidden p-4 rounded-lg"></div>
+            <div id="message" class="hidden p-3 rounded-xl border font-label text-xs tracking-wider"></div>
 
-            <!-- Submit Button -->
+            <!-- Prominent Submit Button (Reference UI Style) -->
             <button type="submit" id="submitBtn"
-                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-                <span id="btnText">Create Account</span>
-                <span id="btnLoader" class="hidden">⏳ Creating...</span>
+                class="btn-tactical w-full py-4 rounded-xl text-sm tracking-[0.2em] font-label font-bold uppercase shadow-[0_0_25px_rgba(79,195,247,0.3)] mt-2">
+                <span id="btnText">ENROLL OPERATOR IDENTITY</span>
+                <span id="btnLoader" class="hidden animate-pulse">⏳ ENROLLING...</span>
             </button>
         </form>
 
-        <div class="mt-6 text-center">
-            <p class="text-gray-600">Already have an account? 
-                <a href="login.html" class="text-blue-600 hover:text-blue-700 font-semibold">Sign In</a>
-            </p>
+        <!-- Divider Line (Reference UI Style) -->
+        <div class="relative my-5">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-[#4fc3f7]/15"></div>
+            </div>
+            <div class="relative flex justify-center text-[10px] font-label tracking-widest uppercase">
+                <span class="bg-[#0a1220] px-3 text-[#6b7a8d]">ALREADY PROVISIONED?</span>
+            </div>
         </div>
-    </div>
 
+        <div class="text-center">
+            <a href="login.html" class="inline-block w-full py-3 px-4 bg-[#060c14]/80 hover:bg-[#4fc3f7]/10 border border-[#4fc3f7]/30 hover:border-[#4fc3f7] rounded-xl font-label text-xs tracking-[0.2em] text-[#4fc3f7] transition uppercase font-bold">
+                [RETURN TO SESSION SIGN IN →]
+            </a>
+        </div>
+    </main>
+
+    <!-- Custom Cursor Script -->
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const dot = document.querySelector('.cursor-dot');
+            const ring = document.querySelector('.cursor-ring');
+            if (dot && ring) {
+                dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            }
+        });
+    </script>
     <script src="register.js"></script>
 </body>
 </html>

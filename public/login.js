@@ -86,7 +86,11 @@ function togglePasswordVisibility() {
 function showMessage(message, type) {
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = message;
-    messageDiv.className = `p-4 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+    messageDiv.className = `p-3.5 rounded border font-label text-xs tracking-wider flex items-center gap-2 ${
+        type === 'success' 
+            ? 'bg-[#0a1220] border-[#69f0ae]/60 text-[#69f0ae] shadow-[0_0_15px_rgba(105,240,174,0.15)]' 
+            : 'bg-[#0a1220] border-[#e53935]/60 text-[#e53935] shadow-[0_0_15px_rgba(229,57,53,0.15)]'
+    }`;
     messageDiv.classList.remove('hidden');
     
     setTimeout(() => {
@@ -103,3 +107,16 @@ function setLoading(loading) {
     btnText.classList.toggle('hidden', loading);
     btnLoader.classList.toggle('hidden', !loading);
 }
+
+function fillDemoUser(type) {
+    if (type === 'admin') {
+        document.getElementById('email').value = 'admintest@example.com';
+        document.getElementById('password').value = 'AdminPass456';
+        showMessage('Filled demo Root Admin credentials (admintest@example.com)', 'success');
+    } else {
+        document.getElementById('email').value = 'valid@example.com';
+        document.getElementById('password').value = 'ValidPass123';
+        showMessage('Filled demo Standard User credentials (valid@example.com)', 'success');
+    }
+}
+window.fillDemoUser = fillDemoUser;

@@ -3,11 +3,11 @@
  * Tests admin and user permissions
  */
 
-require('dotenv').config();
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const User = require('./models/User');
-const { generateToken } = require('./utils/jwt');
+const User = require('../models/User');
+const { generateToken } = require('../utils/jwt');
 
 // Test users
 const testAdmin = {

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -64,6 +65,16 @@ app.use(express.json({ limit: '10kb' })); // Limit body size
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// ponytail: merged duplicate fallback image routes
+['/jpg.jpg', '/profile.png'].forEach(r => app.get(r, (req, res) => {
+  const p = [path.join(__dirname, 'jpg.jpg'), path.join(__dirname, 'documents', 'user.png'), path.join(__dirname, 'src', 'logo.svg')].find(fs.existsSync);
+  p ? res.sendFile(p) : res.status(404).send('Image not found');
+}));
+app.get('/logo.svg', (req, res) => {
+  const p = path.join(__dirname, 'src', 'logo.svg');
+  fs.existsSync(p) ? res.sendFile(p) : res.status(404).send('Logo not found');
+});
+
 
 // Routes
 app.use('/api', authRoutes);

@@ -85,3 +85,6 @@ temp/
 *.sql
 *.sqlite
 *.db
+
+brand-guideline.md
+design.md

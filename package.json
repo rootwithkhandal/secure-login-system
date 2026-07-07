@@ -7,7 +7,14 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "build:css": "npx tailwindcss -i ./public/input.css -o ./public/styles.css --watch",
-    "build:css:prod": "npx tailwindcss -i ./public/input.css -o ./public/styles.css --minify"
+    "build:css:prod": "npx tailwindcss -i ./public/input.css -o ./public/styles.css --minify",
+    "test:admin": "node tests/test-admin-security.js",
+    "test:reg": "node tests/test-registration.js",
+    "test:login": "node tests/test-login.js",
+    "test:rbac": "node tests/test-rbac.js",
+    "test:security": "node tests/test-security.js",
+    "test:all": "node tests/test-e2e.js",
+    "test:e2e": "node tests/test-e2e.js"
   },
   "keywords": [
     "authentication",

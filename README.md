@@ -195,6 +195,32 @@ npm start
 http://localhost:3000
 ```
 
+### ⚡ Running with Mise (Recommended)
+This repository is configured with [mise](https://mise.jdx.dev/) (`mise.toml`) for automatic environment variable loading (`JWT_EXPIRE=7d`, `PORT=3000`, `MONGODB_URI=...`), tool installation (**Node.js**, **MongoDB**, and **mongosh**), and task management across Windows, macOS, and Linux without bash export syntax errors.
+
+```bash
+# 1. Install required tools (Node.js 20, MongoDB, and mongosh)
+mise install
+
+# 2. View all available configured tasks
+mise tasks
+
+# 3. Start local MongoDB server (automatically stores database files in ./data/db)
+mise run db:start
+
+# 4. Open interactive MongoDB shell (mongosh)
+mise run db:shell
+
+# 5. Start development server with live reload
+mise run dev
+
+# 6. Run test suites & inspect database
+mise run test:login
+mise run test:security
+mise run test:all
+mise run db:view
+```
+
 ### First Time Setup
 
 1. **Register an Admin account**

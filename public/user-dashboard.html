@@ -3,79 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard - Enterprise Auth System</title>
+    <title>0xAuth // User Telemetry Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-8">
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">👤 User Dashboard</h1>
-            <p class="text-gray-600">Welcome to your account</p>
-        </div>
-
-        <!-- User Profile Card -->
-        <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white mb-6">
-            <div class="flex items-center gap-4">
-                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-4xl">
-                    👤
-                </div>
-                <div>
-                    <h2 id="userName" class="text-2xl font-bold"></h2>
-                    <p id="userEmail" class="text-blue-100"></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Account Details -->
-        <div class="space-y-4 mb-8">
-            <div class="bg-gray-50 rounded-lg p-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-sm text-gray-600">Role</p>
-                        <p id="userRole" class="text-lg font-semibold text-gray-800"></p>
-                    </div>
-                    <span class="text-2xl">🎭</span>
-                </div>
-            </div>
-
-            <div class="bg-gray-50 rounded-lg p-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-sm text-gray-600">Account Created</p>
-                        <p id="userCreated" class="text-lg font-semibold text-gray-800"></p>
-                    </div>
-                    <span class="text-2xl">📅</span>
-                </div>
-            </div>
-
-            <div class="bg-gray-50 rounded-lg p-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p class="text-sm text-gray-600">Account Status</p>
-                        <p class="text-lg font-semibold text-green-600">Active</p>
-                    </div>
-                    <span class="text-2xl">✅</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Actions -->
-        <div class="space-y-3">
-            <button id="logoutBtn"
-                class="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition transform hover:scale-105">
-                🚪 Logout
-            </button>
-        </div>
-
-        <!-- Info Box -->
-        <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p class="text-sm text-blue-800">
-                <strong>ℹ️ Note:</strong> This is a user account. For administrative features, please contact your system administrator.
-            </p>
-        </div>
+<body class="min-h-screen p-4 md:p-8 relative">
+    <!-- Radar Concentric Rings Background (Reference UI Style) -->
+    <div class="radar-bg">
+        <div class="radar-ring ring-1"></div>
+        <div class="radar-ring ring-2"></div>
+        <div class="radar-ring ring-3"></div>
+        <div class="radar-ring ring-4"></div>
     </div>
 
+    <!-- Background Watermark -->
+    <div class="bg-watermark">0xOPERATOR</div>
+
+    <!-- Custom Cyber-Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <main class="w-full max-w-4xl mx-auto z-10 relative fade-in space-y-6">
+        <!-- Top Navigation Bar -->
+        <header class="hud-frame rounded-2xl p-6 flex flex-wrap items-center justify-between gap-4 bg-[#0a1220]/95 border border-[#4fc3f7]/25">
+            <div class="flex items-center gap-4">
+                <img src="/logo.svg" alt="khandal.tech Logo" class="w-12 h-12 rounded-xl object-contain shadow-[0_0_20px_rgba(79,195,247,0.3)]">
+                <div>
+                    <h1 class="font-label text-base text-white tracking-[0.2em] font-bold">OPERATOR TELEMETRY DASHBOARD</h1>
+                    <p class="font-label text-xs text-[#6b7a8d] tracking-widest">ENTERPRISE ACCESS MATRIX // SECURE AUTH PLATFORM</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="badge badge-green animate-pulse">● ACTIVE SESSION</span>
+                <button id="logoutBtn" class="btn-tactical btn-danger px-5 py-2.5 rounded-xl text-xs tracking-widest">
+                    [TERMINATE SESSION]
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Operator Telemetry Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Left Card: Operator Identity Showcase -->
+            <div class="md:col-span-5 auth-card p-6 bg-[#0a1220]/90 border border-[#4fc3f7]/25 flex flex-col justify-between rounded-3xl">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-label text-xs text-[#4fc3f7] tracking-widest">[IDENTITY VERIFIED]</span>
+                        <span id="roleBadge" class="badge badge-bug">OPERATOR</span>
+                    </div>
+
+                    <!-- Profile Avatar Showcase -->
+                    <div class="relative overflow-hidden rounded-2xl border-2 border-[#4fc3f7]/50 shadow-[0_0_30px_rgba(79,195,247,0.25)] bg-[#060c14] mb-6 p-6 flex flex-col items-center justify-center text-center min-h-[180px]">
+                        <div class="scanline"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-[#0a1220] border border-[#4fc3f7]/60 flex items-center justify-center shadow-[0_0_20px_rgba(79,195,247,0.3)] mb-4 text-3xl">
+                            🛡️
+                        </div>
+                        <div>
+                            <div class="font-label text-[10px] text-[#4fc3f7] tracking-widest">CLEARANCE CERTIFIED</div>
+                            <h2 id="userName" class="font-display text-2xl text-white tracking-wide mt-1 uppercase">OPERATOR</h2>
+                            <p id="userEmail" class="font-mono text-xs text-[#6b7a8d] mt-0.5"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-[#4fc3f7]/15 pt-4 text-[11px] font-label text-[#6b7a8d] space-y-2">
+                    <div class="flex justify-between">
+                        <span>SESSION ENCRYPTION:</span>
+                        <span class="text-white">AES-256-GCM</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>AUTHENTICATION PROTOCOL:</span>
+                        <span class="text-[#4fc3f7]">0xAUTH-JWT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Card: Session Details & Telemetry Matrix -->
+            <div class="md:col-span-7 terminal-window hud-frame bg-[#0a1220]/95 flex flex-col justify-between rounded-3xl">
+                <!-- Terminal Header -->
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                    </div>
+                    <div class="font-label tracking-widest text-xs text-[#6b7a8d] font-semibold uppercase">
+                        bash — secure-auth.portal/telemetry
+                    </div>
+                    <div class="text-[#4fc3f7] font-label text-xs">[0x03]</div>
+                </div>
+
+                <!-- Telemetry Matrix Content -->
+                <div class="p-6 space-y-5">
+                    <h3 class="font-display text-2xl text-white tracking-wide border-b border-[#4fc3f7]/15 pb-3">
+                        ACCESS CONTROL METRICS
+                    </h3>
+
+                    <div class="space-y-4 font-mono">
+                        <div class="bg-[#060c14]/80 border border-[#4fc3f7]/25 rounded-2xl p-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-label text-[#6b7a8d] tracking-widest">ASSIGNED CLEARANCE ROLE</p>
+                                <p id="userRole" class="text-lg font-bold text-white mt-1 uppercase tracking-wider"></p>
+                            </div>
+                            <span class="text-3xl">🛡️</span>
+                        </div>
+
+                        <div class="bg-[#060c14]/80 border border-[#4fc3f7]/25 rounded-2xl p-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-label text-[#6b7a8d] tracking-widest">ENROLLMENT TIMESTAMP</p>
+                                <p id="userCreated" class="text-sm font-semibold text-white mt-1"></p>
+                            </div>
+                            <span class="text-3xl">⏱️</span>
+                        </div>
+
+                        <div class="bg-[#060c14]/80 border border-[#69f0ae]/35 rounded-2xl p-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-label text-[#6b7a8d] tracking-widest">SYSTEM ACCOUNT STATUS</p>
+                                <p class="text-base font-bold text-[#69f0ae] mt-1 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#69f0ae] inline-block animate-pulse"></span> ACTIVE // COMPLIANT
+                                </p>
+                            </div>
+                            <span class="text-3xl">✅</span>
+                        </div>
+                    </div>
+
+                    <!-- Security Directive Notice -->
+                    <div class="bg-[#060c14] border-l-4 border-[#4fc3f7] p-4 rounded-xl text-xs font-mono text-[#6b7a8d] leading-relaxed">
+                        <span class="text-[#4fc3f7] font-bold">[SECURITY DIRECTIVE]:</span> This session is monitored under strict defensive telemetry. Any unauthorized privilege escalation attempts will trigger automatic session revocation and SOC alerting.
+                    </div>
+                </div>
+
+                <div class="bg-[#060c14]/60 border-t border-[#4fc3f7]/15 p-4 flex items-center justify-between text-xs font-label text-[#6b7a8d]">
+                    <span>SYSTEM ID: 0xSECURE-AUTH</span>
+                    <span>STATUS: SECURE</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom Cursor Script -->
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const dot = document.querySelector('.cursor-dot');
+            const ring = document.querySelector('.cursor-ring');
+            if (dot && ring) {
+                dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            }
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             checkAuth();
@@ -94,18 +169,31 @@
             // Display user info
             document.getElementById('userName').textContent = user.username || 'User';
             document.getElementById('userEmail').textContent = user.email || '';
-            document.getElementById('userRole').textContent = user.role || 'User';
             
-            // Format created date if available
+            const roleText = user.role || 'User';
+            document.getElementById('userRole').textContent = roleText;
+            
+            const badge = document.getElementById('roleBadge');
+            if (roleText === 'Admin') {
+                badge.className = 'badge badge-purple';
+                badge.textContent = '[ROOT ADMIN]';
+            } else {
+                badge.className = 'badge badge-bug';
+                badge.textContent = '[STANDARD OPERATOR]';
+            }
+            
+            // Format created date
             if (user.createdAt) {
                 const date = new Date(user.createdAt);
                 document.getElementById('userCreated').textContent = date.toLocaleDateString('en-US', {
                     year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }) + ' UTC';
             } else {
-                document.getElementById('userCreated').textContent = 'N/A';
+                document.getElementById('userCreated').textContent = 'SYS_EPOCH // N/A';
             }
         }
 

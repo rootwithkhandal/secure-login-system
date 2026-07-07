@@ -7,6 +7,19 @@ function setupEventListeners() {
     document.getElementById('registerForm').addEventListener('submit', handleRegister);
     document.getElementById('password').addEventListener('input', checkPasswordStrength);
     document.getElementById('togglePassword').addEventListener('click', togglePasswordVisibility);
+    
+    document.getElementById('role')?.addEventListener('change', (e) => {
+        const adminContainer = document.getElementById('adminSecretContainer');
+        const adminInput = document.getElementById('adminSecret');
+        if (e.target.value === 'Admin') {
+            adminContainer.classList.remove('hidden');
+            adminInput.setAttribute('required', 'true');
+        } else {
+            adminContainer.classList.add('hidden');
+            adminInput.removeAttribute('required');
+            adminInput.value = '';
+        }
+    });
 }
 
 function checkPasswordStrength() {
@@ -84,6 +97,7 @@ async function handleRegister(e) {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     const role = document.getElementById('role').value;
+    const adminSecret = document.getElementById('adminSecret')?.value || '';
     
     // Validate passwords match
     if (password !== confirmPassword) {
@@ -103,7 +117,7 @@ async function handleRegister(e) {
         const response = await fetch('/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email, password, role })
+            body: JSON.stringify({ username, email, password, role, adminSecret })
         });
         
         const data = await response.json();
@@ -139,7 +153,11 @@ function togglePasswordVisibility() {
 function showMessage(message, type) {
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = message;
-    messageDiv.className = `p-4 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+    messageDiv.className = `p-3.5 rounded border font-label text-xs tracking-wider flex items-center gap-2 ${
+        type === 'success' 
+            ? 'bg-[#0a1220] border-[#69f0ae]/60 text-[#69f0ae] shadow-[0_0_15px_rgba(105,240,174,0.15)]' 
+            : 'bg-[#0a1220] border-[#e53935]/60 text-[#e53935] shadow-[0_0_15px_rgba(229,57,53,0.15)]'
+    }`;
     messageDiv.classList.remove('hidden');
     
     setTimeout(() => {

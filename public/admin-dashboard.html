@@ -3,131 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Enterprise Auth System</title>
+    <title>0xAuth // Root Command Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="admin-styles.css">
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-gray-800">👑 Admin Dashboard</h1>
+<body class="min-h-screen p-4 md:p-8 relative">
+    <!-- Radar Concentric Rings Background (Reference UI Style) -->
+    <div class="radar-bg">
+        <div class="radar-ring ring-1"></div>
+        <div class="radar-ring ring-2"></div>
+        <div class="radar-ring ring-3"></div>
+        <div class="radar-ring ring-4"></div>
+    </div>
+
+    <!-- Background Watermark -->
+    <div class="bg-watermark">0xROOT</div>
+
+    <!-- Custom Cyber-Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <div class="max-w-7xl mx-auto z-10 relative space-y-8 fade-in">
+        <!-- Top Navigation Header -->
+        <header class="hud-frame rounded-2xl p-6 flex flex-wrap justify-between items-center gap-4 bg-[#0a1220]/95 border border-[#4fc3f7]/25">
             <div class="flex items-center gap-4">
-                <span id="adminName" class="text-gray-600"></span>
-                <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition">
-                    Logout
+                <img src="/logo.svg" alt="khandal.tech Logo" class="w-12 h-12 rounded-xl object-contain shadow-[0_0_20px_rgba(79,195,247,0.3)]">
+                <div>
+                    <h1 class="font-label text-base text-white tracking-[0.2em] font-bold">ROOT COMMAND CENTER // ACCESS MATRIX</h1>
+                    <p class="font-label text-xs text-[#6b7a8d] tracking-widest">ENTERPRISE ACCESS MATRIX // SECURITY PLATFORM</p>
+                </div>
+            </div>
+
+            <!-- Admin Operator Info & Logout -->
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-3 bg-[#060c14]/80 border border-[#4fc3f7]/30 px-3.5 py-2 rounded-xl">
+                    <div>
+                        <span class="block font-label text-[10px] text-[#ce93d8] tracking-widest leading-tight">[ROOT OPERATOR]</span>
+                        <span id="adminName" class="font-mono text-xs text-white font-bold"></span>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="btn-tactical btn-danger px-4 py-2.5 rounded-xl text-xs tracking-widest">
+                    [REVOKE SESSION]
                 </button>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="container mx-auto px-6 py-8">
-        <!-- Statistics Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-600 text-sm">Total Users</p>
-                        <p id="totalUsers" class="text-3xl font-bold text-blue-600">0</p>
+        <main class="space-y-8">
+            <!-- Statistics Telemetry Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Total Users -->
+                <div class="auth-card p-6 bg-[#0a1220]/90 border border-[#4fc3f7]/25 rounded-3xl stat-card">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-label text-xs text-[#6b7a8d] tracking-widest">TOTAL ENROLLED OPERATORS</span>
+                        <span class="badge badge-bug">[0x01]</span>
                     </div>
-                    <div class="text-4xl">👥</div>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-600 text-sm">Admins</p>
-                        <p id="totalAdmins" class="text-3xl font-bold text-purple-600">0</p>
+                    <div class="flex items-baseline justify-between mt-4">
+                        <p id="totalUsers" class="font-display text-5xl text-[#4fc3f7] tracking-wider drop-shadow-[0_0_15px_rgba(79,195,247,0.4)]">0</p>
+                        <span class="text-3xl opacity-80">👥</span>
                     </div>
-                    <div class="text-4xl">👑</div>
                 </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-600 text-sm">Recent Users (7d)</p>
-                        <p id="recentUsers" class="text-3xl font-bold text-green-600">0</p>
+                
+                <!-- Total Admins -->
+                <div class="auth-card p-6 bg-[#0a1220]/90 border border-[#ce93d8]/25 rounded-3xl stat-card" style="animation-delay: 0.1s;">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-label text-xs text-[#6b7a8d] tracking-widest">ROOT ADMINISTRATORS</span>
+                        <span class="badge badge-purple">[0x00]</span>
                     </div>
-                    <div class="text-4xl">📈</div>
+                    <div class="flex items-baseline justify-between mt-4">
+                        <p id="totalAdmins" class="font-display text-5xl text-[#ce93d8] tracking-wider drop-shadow-[0_0_15px_rgba(206,147,216,0.4)]">0</p>
+                        <span class="text-3xl opacity-80">👑</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- User Management -->
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-xl font-bold text-gray-800">User Management</h2>
-                <div class="flex gap-3">
-                    <input type="text" id="searchInput" placeholder="Search users..."
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                    <button id="refreshBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">
-                        🔄 Refresh
-                    </button>
+                
+                <!-- Recent Users -->
+                <div class="auth-card p-6 bg-[#0a1220]/90 border border-[#69f0ae]/25 rounded-3xl stat-card" style="animation-delay: 0.2s;">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-label text-xs text-[#6b7a8d] tracking-widest">NEW ENROLLMENTS (7D)</span>
+                        <span class="badge badge-green">[TELEMETRY]</span>
+                    </div>
+                    <div class="flex items-baseline justify-between mt-4">
+                        <p id="recentUsers" class="font-display text-5xl text-[#69f0ae] tracking-wider drop-shadow-[0_0_15px_rgba(105,240,174,0.4)]">0</p>
+                        <span class="text-3xl opacity-80">📈</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Users Table -->
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Username</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Created</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="usersTableBody" class="bg-white divide-y divide-gray-200">
-                        <!-- Users will be loaded here -->
-                    </tbody>
-                </table>
+            <!-- User Management Matrix -->
+            <div class="terminal-window hud-frame bg-[#0a1220]/95 rounded-3xl">
+                <!-- Terminal Header -->
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                    </div>
+                    <div class="font-label tracking-widest text-xs text-[#6b7a8d] font-semibold uppercase">
+                        bash — secure-auth.portal/access-matrix
+                    </div>
+                    <div class="text-[#4fc3f7] font-label text-xs">[MATRIX_VIEW]</div>
+                </div>
+
+                <!-- Matrix Controls -->
+                <div class="p-6 border-b border-[#4fc3f7]/15 flex flex-wrap justify-between items-center gap-4 bg-[#0d1828]/50">
+                    <div>
+                        <h2 class="font-display text-2xl text-white tracking-wide">OPERATOR ACCESS MATRIX</h2>
+                        <p class="font-label text-xs text-[#6b7a8d] tracking-widest mt-0.5">MANAGE SYSTEM IDENTITIES AND CLEARANCE ROLES</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="relative">
+                            <input type="text" id="searchInput" placeholder="QUERY OPERATOR..."
+                                class="px-4 py-2 bg-[#060c14] border border-[#4fc3f7]/30 rounded-xl text-xs font-mono text-white focus:border-[#4fc3f7] w-64 uppercase">
+                        </div>
+                        <button id="refreshBtn" class="btn-tactical px-4 py-2 rounded-xl text-xs tracking-widest flex items-center gap-1.5">
+                            <span>🔄</span> [RELOAD MATRIX]
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3.5">OPERATOR HANDLE</th>
+                                <th class="px-6 py-3.5">CONTACT EMAIL</th>
+                                <th class="px-6 py-3.5">CLEARANCE ROLE</th>
+                                <th class="px-6 py-3.5">ENROLLMENT DATE</th>
+                                <th class="px-6 py-3.5 text-right">TACTICAL ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody" class="divide-y divide-[#4fc3f7]/15 bg-[#0a1220]">
+                            <!-- Users loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <!-- Edit User Modal -->
-    <div id="editModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Edit User</h3>
-            <form id="editForm" class="space-y-4">
+    <div id="editModal" class="hidden fixed inset-0 flex items-center justify-center p-4">
+        <div class="terminal-window hud-frame bg-[#0a1220] max-w-md w-full border border-[#4fc3f7]/40 shadow-[0_0_50px_rgba(0,0,0,0.8)] rounded-3xl">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <span class="terminal-dot dot-red"></span>
+                    <span class="terminal-dot dot-yellow"></span>
+                    <span class="terminal-dot dot-green"></span>
+                </div>
+                <div class="font-label tracking-widest text-xs text-[#4fc3f7] uppercase">
+                    MODIFY_OPERATOR // CLEARANCE
+                </div>
+                <div class="text-[#ce93d8] font-label text-xs">[EDIT]</div>
+            </div>
+
+            <form id="editForm" class="p-6 space-y-4">
                 <input type="hidden" id="editUserId">
                 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                    <label class="block text-xs font-label text-[#4fc3f7] tracking-widest mb-1.5">OPERATOR HANDLE</label>
                     <input type="text" id="editUsername" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        class="w-full px-4 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/30 rounded-xl text-white font-mono text-sm">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <label class="block text-xs font-label text-[#4fc3f7] tracking-widest mb-1.5">CONTACT EMAIL</label>
                     <input type="email" id="editEmail" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        class="w-full px-4 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/30 rounded-xl text-white font-mono text-sm">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                    <label class="block text-xs font-label text-[#4fc3f7] tracking-widest mb-1.5">CLEARANCE LEVEL</label>
                     <select id="editRole" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <option value="User">User</option>
-                        <option value="Admin">Admin</option>
+                        class="w-full px-4 py-2.5 bg-[#060c14]/80 border border-[#4fc3f7]/30 rounded-xl text-white font-label text-sm uppercase">
+                        <option value="User" class="bg-[#0a1220] text-white">Standard Operator [User]</option>
+                        <option value="Admin" class="bg-[#0a1220] text-[#ce93d8]">Root Administrator [Admin]</option>
                     </select>
                 </div>
                 
-                <div class="flex gap-3">
-                    <button type="submit" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition">
-                        Save Changes
+                <div class="flex gap-3 pt-4 border-t border-[#4fc3f7]/15">
+                    <button type="submit" class="btn-tactical flex-1 py-3 rounded-xl text-xs tracking-widest font-bold">
+                        [SAVE MODIFICATIONS]
                     </button>
-                    <button type="button" id="cancelEdit" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded-lg transition">
-                        Cancel
+                    <button type="button" id="cancelEdit" class="px-4 py-3 bg-[#060c14]/80 hover:bg-[#111f33] text-[#6b7a8d] hover:text-white border border-[#4fc3f7]/20 rounded-xl text-xs font-label tracking-widest transition">
+                        [CANCEL]
                     </button>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- Custom Cursor Script -->
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const dot = document.querySelector('.cursor-dot');
+            const ring = document.querySelector('.cursor-ring');
+            if (dot && ring) {
+                dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            }
+        });
+    </script>
     <script src="admin-dashboard.js"></script>
 </body>
 </html>

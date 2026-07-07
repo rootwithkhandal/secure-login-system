@@ -71,17 +71,7 @@ router.get('/generate', (req, res) => {
   });
 });
 
-// Verify CAPTCHA
-router.post('/verify', (req, res) => {
-  const { captchaId, captchaText } = req.body;
-  const result = verifyCaptcha(captchaId, captchaText);
-  
-  if (!result.valid) {
-    return res.status(400).json(result);
-  }
-  
-  res.json(result);
-});
-
+// ponytail: deleted unused standalone /verify route
 module.exports = router;
 module.exports.verifyCaptcha = verifyCaptcha;
+

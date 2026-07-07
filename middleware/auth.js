@@ -30,19 +30,9 @@ const isAdmin = (req, res, next) => {
   next();
 };
 
-// Middleware to check if user is accessing their own data
-const isOwnerOrAdmin = (req, res, next) => {
-  const userId = req.params.id || req.body.userId;
-  
-  if (req.user.role === 'Admin' || req.user.id === userId) {
-    next();
-  } else {
-    return res.status(403).json({ message: 'Access denied. You can only access your own data.' });
-  }
-};
-
+// ponytail: deleted unused isOwnerOrAdmin middleware
 module.exports = {
   authenticateToken,
-  isAdmin,
-  isOwnerOrAdmin
+  isAdmin
 };
+

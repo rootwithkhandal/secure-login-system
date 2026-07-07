@@ -1,0 +1,74 @@
+# ==============================================================================
+# mise.toml — Tooling, Environment & Tasks Configuration
+# https://mise.jdx.dev/
+# ==============================================================================
+
+[settings]
+fetch_remote_versions_timeout = "60s"
+http_timeout = "300s"
+
+[tools]
+node = "20"
+mongodb = "7.0"
+mongosh = "latest"
+
+[env]
+PORT = "3000"
+MONGODB_URI = "mongodb://localhost:27017/user_auth_db"
+JWT_SECRET = "super_secert_key"
+JWT_EXPIRE = "7d"
+ADMIN_SECRET_KEY = "0xADMIN_SECURE_KEY_2026"
+NODE_ENV = "development"
+
+# ==============================================================================
+# Task Definitions
+# Run tasks with: mise run <task_name> (or `mise r <task_name>`)
+# ==============================================================================
+
+[tasks.dev]
+description = "Start development server with live reload (nodemon)"
+run = "npm run dev"
+
+[tasks.start]
+description = "Start production Node.js server"
+run = "npm run start"
+
+[tasks."build:css"]
+description = "Build Tailwind CSS bundles"
+run = "npm run build:css:prod"
+
+[tasks."db:start"]
+description = "Start local MongoDB server (mongod) storing data in ./data/db"
+run = "node -e \"require('fs').mkdirSync('./data/db', {recursive: true})\" && mongod --dbpath ./data/db"
+
+[tasks."db:shell"]
+description = "Open interactive MongoDB shell (mongosh)"
+run = "mongosh mongodb://localhost:27017/user_auth_db"
+
+[tasks."db:view"]
+description = "Inspect local MongoDB users and database records via Node script"
+run = "node view-database.js"
+
+[tasks."test:login"]
+description = "Run login authentication suite & JWT verification tests"
+run = "node test-login.js"
+
+[tasks."test:security"]
+description = "Run rate-limiting, injection prevention & security header tests"
+run = "node test-security.js"
+
+[tasks."test:rbac"]
+description = "Run role-based access control & authorization tests"
+run = "node test-rbac.js"
+
+[tasks."test:reg"]
+description = "Run registration validation and password strength tests"
+run = "node test-registration.js"
+
+[tasks."test:admin"]
+description = "Run Root Admin account security challenge verification tests"
+run = "node test-admin-security.js"
+
+[tasks."test:all"]
+description = "Run comprehensive E2E automation test suite"
+run = "node test-e2e.js"
